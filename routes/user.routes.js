@@ -3,7 +3,7 @@ const router= express.Router();
 const { body, validationResult } = require('express-validator');
 const userModel= require('../models/user.model')
 const bcrypt = require ('bcrypt')
-
+const jwt= require('jsonwebtoken')
 
 // /user/test */
  //frontend    ==> from database to frontend
@@ -72,6 +72,15 @@ router.post('/login',
             })
         }
     
+        const token= jwt.sign({
+            userID: user._id,
+            email: user.email,
+            username: user.username
+        },
+        process.env.JWT_SECRET,
+    )
+    res.cookie('token', token)
+    res.send('Logged In');
     }
 
 )

@@ -15,3 +15,4 @@ ejs is use for to eject html from the backend.
 
 ## we wil create models, userSchema
 ## Install bcrypt for password hash "Security Purpose"
+## Generating Token
